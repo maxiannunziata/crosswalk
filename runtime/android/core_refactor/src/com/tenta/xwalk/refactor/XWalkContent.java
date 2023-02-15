@@ -1561,12 +1561,12 @@ class XWalkContent implements XWalkPreferences.KeyValueChangeListener {
         }
     }
 
-/*    public void setZOrderOnTop(boolean onTop) {
+public void setZOrderOnTop(boolean onTop) {
         if (mContentViewRenderView == null)
             return;
         mContentViewRenderView.setZOrderOnTop(onTop);
     }
-*/
+
 
     // TODO(iotto) : Fix the Zoom
     public boolean zoomIn() {
