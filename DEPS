@@ -22,11 +22,9 @@ vars = {
 }
 
 deps = {
-    'src/xwalk/third_party/tenta/sqlitecrypt': 'git@bitbucket.org:tenta-browser/android-database-sqlitecrypt.git@origin/chromium_77',
-    'src/xwalk/third_party/tenta/meta_fs' : 'git@bitbucket.org:tenta-browser/crosswalk-metafs.git@origin/chromium_77',
-    'src/xwalk/third_party/tenta/chromium_cache' : 'git@bitbucket.org:tenta-browser/crosswalk-metafs-cache.git@origin/chromium_77',
-    'src/xwalk/third_party/tenta/crosswalk_extensions' : 'git@bitbucket.org:tenta-browser/crosswalk-extensions.git@origin/chromium_77',
-    'src/xwalk/third_party/tenta/mimicvpn' : 'git@bitbucket.org:tenta-browser/crosswalk-mimicvpn.git@origin/chromium_77',
+   # 'src/xwalk/third_party/tenta/sqlitecrypt': 'git@bitbucket.org:mikandi/android-database-sqlitecrypt.git',
+   # 'src/xwalk/third_party/tenta/meta_fs' : 'git@bitbucket.org:mikandi/file-metadata-sqlite.git@origin/chromium_merge',
+   # 'src/xwalk/third_party/tenta/chromium_cache' : 'git@bitbucket.org:mikandi/chromium-cache-metafs.git@origin/chromium_merge',
 }
 
 hooks = [
@@ -42,7 +40,7 @@ hooks = [
     "pattern": ".",
     "action": ["python", "src/xwalk/tools/fetch_deps.py", "-v"],
   },
-#  { see chromium commit 7899e08d3eafd91c8feba31e2a18b715f833675f
+  {
     # From src/DEPS: fetch the Google Play services library and, if
     # necessary, prompt the user to accept its EULA.
     # Run here because fetch_deps.py (itself a hook) runs another gclient
@@ -51,20 +49,20 @@ hooks = [
     # Note that this hook is run after all Chromium hooks. This is not a
     # problem as of M48, but this needs to be kept in mind in case things start
     # to break.
-#    'action': [
-#      'python',
-#      'src/build/android/play_services/update.py',
-#      'download'
-#    ],
-#    'pattern':
-#      '.',
-#    'name':
-#      'sdkextras'
-#  },
-#  {
-#    # A change to a .gyp, .gypi, or to GYP itself should run the generator.
-#    "name": "gyp-xwalk",
-#    "pattern": ".",
-#    "action": ["python", "src/xwalk/gyp_xwalk"],
-#  }
+    'action': [
+      'python',
+      'src/build/android/play_services/update.py',
+      'download'
+    ],
+    'pattern':
+      '.',
+    'name':
+      'sdkextras'
+  },
+  {
+    # A change to a .gyp, .gypi, or to GYP itself should run the generator.
+    "name": "gyp-xwalk",
+    "pattern": ".",
+    "action": ["python", "src/xwalk/gyp_xwalk"],
+  }
 ]
